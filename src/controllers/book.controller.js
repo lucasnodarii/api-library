@@ -4,7 +4,7 @@ const bookController = {
   createBook: async function (req, res, next) {
     try {
       let book = req.body;
-      if (!book.name || !book.value || !book.stock || !book.author_id) {
+      if (!book.name || !book.value || !book.stock || !book.authorId) {
         throw new Error("Submit all fields for registration");
       }
       book = await bookService.createBookService(book);
@@ -21,7 +21,7 @@ const bookController = {
         !book.name ||
         !book.value ||
         !book.stock ||
-        !book.author_id
+        !book.authorId
       ) {
         throw new Error("Submit all fields for registration");
       }
@@ -39,20 +39,20 @@ const bookController = {
       next(error);
     }
   },
-  getAllBooks: async function (req, res, next){
-    try{
-        res.send(await bookService.getAllBooksService());
-    }catch(error){
-        next(error);
+  getAllBooks: async function (req, res, next) {
+    try {
+      res.send(await bookService.getAllBooksService(req.query.authorId));
+    } catch (error) {
+      next(error);
     }
   },
-  getBookById: async function (req, res, next){
-    try{
-        res.send(await bookService.getBookByIdService(req.params.id));
-    }catch(error){
-        next(error);
+  getBookById: async function (req, res, next) {
+    try {
+      res.send(await bookService.getBookByIdService(req.params.id));
+    } catch (error) {
+      next(error);
     }
-  }
+  },
 };
 
 export default bookController;
