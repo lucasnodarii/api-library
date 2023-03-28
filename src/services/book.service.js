@@ -51,7 +51,7 @@ const bookService = {
     } catch (error) {
       throw error;
     }
-  },
+  }
 };
 
 export default bookService;
