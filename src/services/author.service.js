@@ -22,7 +22,7 @@ const authorService = {
   },
   deleteAuthorService: async function (id) {
     try {
-      await Author.destroy({ where: { authorId: id } });      
+      await Author.destroy({ where: { authorId: id } });
     } catch (error) {
       throw error;
     }
@@ -34,13 +34,13 @@ const authorService = {
       throw error;
     }
   },
-  getAuthorByIdService: async function (id){
-    try{
-        return await Author.findByPk(id)
-    }catch(error){  
-        throw error;
+  getAuthorByIdService: async function (id) {
+    try {
+      return await Author.findByPk(id);
+    } catch (error) {
+      throw error;
     }
-  }
+  },
 };
 
 export default authorService;
